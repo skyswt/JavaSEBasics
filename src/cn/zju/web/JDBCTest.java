@@ -1,13 +1,15 @@
 package cn.zju.web;
 
 import cn.zju.utils.DBUtils;
+import cn.zju.utils.DbUtils2;
 
 import java.sql.*;
 
 public class JDBCTest {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
 
-        Connection conn = DBUtils.getConnection();
+//        Connection conn = DBUtils.getConnection();
+        Connection conn = DbUtils2.getConnection();
         /*Statement stmt = conn.createStatement();
         String sql = "select * from user";
         ResultSet result = stmt.executeQuery(sql);
@@ -22,7 +24,7 @@ public class JDBCTest {
         while (result.next()) {
             System.out.println(result.getString("name"));
         }
-        DBUtils.closeAll(conn, pstmt, result);
+//        DBUtils.closeAll(conn, pstmt, result);
     }
 
 }

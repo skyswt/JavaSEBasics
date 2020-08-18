@@ -15,7 +15,7 @@ public class DbUtils2 {
     static {
         Properties properties = new Properties();
         try {
-            properties.load(DbUtils2.class.getResourceAsStream("database.properteis"));
+            properties.load(DbUtils2.class.getResourceAsStream("/database.properties"));
             ds = (DruidDataSource) DruidDataSourceFactory.createDataSource(properties);
         } catch (Exception e) {
             e.printStackTrace();
