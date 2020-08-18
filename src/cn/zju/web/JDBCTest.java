@@ -1,14 +1,13 @@
 package cn.zju.web;
 
+import cn.zju.utils.DBUtils;
+
 import java.sql.*;
 
 public class JDBCTest {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.jdbc.Driver");
-        String url = "jdbc:mysql://localhost:3306/database?useUnicode=true&characterEncoding=utf8&useSSL=false";
-        String user = "root";
-        String password = "123456";
-        Connection conn = DriverManager.getConnection(url, user, password);
+
+        Connection conn = DBUtils.getConnection();
         /*Statement stmt = conn.createStatement();
         String sql = "select * from user";
         ResultSet result = stmt.executeQuery(sql);
@@ -17,15 +16,13 @@ public class JDBCTest {
                     result.getInt("age"));
         }*/
 
-        PreparedStatement pstmt = conn.prepareStatement("select * from user where name = ?");
-        pstmt.setString(1, "wen");
+        PreparedStatement pstmt = conn.prepareStatement("select * from user where age = ?");
+        pstmt.setString(1, "21");
         ResultSet result = pstmt.executeQuery();
         while (result.next()) {
             System.out.println(result.getString("name"));
         }
-        result.close();
-        pstmt.close();
-        conn.close();
+        DBUtils.closeAll(conn, pstmt, result);
     }
 
 }
