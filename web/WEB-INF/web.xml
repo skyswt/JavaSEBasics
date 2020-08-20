@@ -12,4 +12,14 @@
         <servlet-name>MyServlet</servlet-name>
         <url-pattern>/myservlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>test</servlet-name>
+        <servlet-class>cn.zju.web.servlet.MyServlet2</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>test</servlet-name>
+        <url-pattern>/test2</url-pattern>
+    </servlet-mapping>
 </web-app>
